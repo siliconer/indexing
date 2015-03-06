@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<STUDY_SET xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <STUDY center_name="UT_COB" alias="DRP002142" accession="DRP002142">
+    <IDENTIFIERS>
+      <PRIMARY_ID>DRP002142</PRIMARY_ID>
+      <EXTERNAL_ID namespace="BioProject">PRJDB943</EXTERNAL_ID>
+      <SUBMITTER_ID namespace="UT_COB">DRP002142</SUBMITTER_ID>
+    </IDENTIFIERS>
+    <DESCRIPTOR>
+      <STUDY_TITLE>Genome sequencing of Mycobacterium chlorophenolicum JCM 7439</STUDY_TITLE>
+      <STUDY_TYPE existing_study_type="Whole Genome Sequencing"/>
+      <STUDY_ABSTRACT>For the promotion of various studies, we perform genome sequencing of the important 300 microbial organisms to human and the environment.</STUDY_ABSTRACT>
+      <CENTER_PROJECT_NAME>Genome sequencing of Mycobacterium chlorophenolicum JCM 7439</CENTER_PROJECT_NAME>
+    </DESCRIPTOR>
+  </STUDY>
+</STUDY_SET>

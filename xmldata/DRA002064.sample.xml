@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAMPLE_SET xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SAMPLE center_name="UT_COB" alias="DRS015578" accession="DRS015578">
+    <IDENTIFIERS>
+      <PRIMARY_ID>DRS015578</PRIMARY_ID>
+      <SUBMITTER_ID namespace="UT_COB">DRS015578</SUBMITTER_ID>
+    </IDENTIFIERS>
+    <TITLE>Whole genome analysis of Mycobacterium chlorophenolicum JCM7439</TITLE>
+    <SAMPLE_NAME>
+      <TAXON_ID>1303685</TAXON_ID>
+      <SCIENTIFIC_NAME>Mycobacterium chlorophenolicum JCM7439</SCIENTIFIC_NAME>
+    </SAMPLE_NAME>
+    <DESCRIPTION>For the promotion of various studies, we perform genome sequencing of the important 300 microbial organisms to human and the environment.</DESCRIPTION>
+    <SAMPLE_LINKS>
+      <SAMPLE_LINK>
+        <XREF_LINK>
+          <DB>biosample</DB>
+          <ID>2731205</ID>
+        </XREF_LINK>
+      </SAMPLE_LINK>
+    </SAMPLE_LINKS>
+  </SAMPLE>
+</SAMPLE_SET>

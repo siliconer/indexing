@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RUN_SET xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <RUN center_name="UT_COB" alias="DRR017836" run_center="UT_COB" run_date="2013-03-18T15:00:00Z" accession="DRR017836">
+    <IDENTIFIERS>
+      <PRIMARY_ID>DRR017836</PRIMARY_ID>
+      <SUBMITTER_ID namespace="UT_COB">DRR017836</SUBMITTER_ID>
+    </IDENTIFIERS>
+    <EXPERIMENT_REF accession="DRX016088" refcenter="UT_COB" refname="DRX016088">
+      <IDENTIFIERS>
+        <PRIMARY_ID>DRX016088</PRIMARY_ID>
+        <SUBMITTER_ID namespace="UT_COB">DRX016088</SUBMITTER_ID>
+      </IDENTIFIERS>
+    </EXPERIMENT_REF>
+  </RUN>
+</RUN_SET>
