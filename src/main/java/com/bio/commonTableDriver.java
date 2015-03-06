@@ -17,10 +17,13 @@ import org.apache.mahout.text.wikipedia.XmlInputFormat;
 
 public final class commonTableDriver {
  public static void main(String[] args) throws Exception {
-String root_dir = System.getProperty("user.dir");
-String input = root_dir + File.separator + "xmldata"+File.separator + "DRA002064.experiment.xml"  ;
-String output = root_dir;
-  commonRunJob(input,output);
+//String root_dir = System.getProperty("user.dir");
+//String input = root_dir + File.separator + "xmldata"+File.separator + "DRA002064.experiment.xml"  ;
+//String output = root_dir;
+  commonRunJob(args[0],args[1]);
+//	 String input = "input/DRA002064.experiment.xml";
+//	 String output = "output";
+//	commonRunJob(input,output);
  }
 
  public static void commonRunJob(String input,String output) throws Exception  {
