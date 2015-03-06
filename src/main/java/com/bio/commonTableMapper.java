@@ -1,12 +1,16 @@
 package com.bio;
 
 import com.bio.xmlDef;
+
 import static javax.xml.stream.XMLStreamConstants.CHARACTERS;
 import static javax.xml.stream.XMLStreamConstants.START_ELEMENT;
+
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamReader;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 
 import org.apache.hadoop.conf.Configuration;
@@ -37,39 +41,70 @@ public class commonTableMapper
  public void map(LongWritable key, Text value, Mapper.Context context) 
   throws IOException, InterruptedException {
    String currLine = value.toString();
+   String currentElement = "";
    try {
-    XMLStreamReader reader = XMLInputFactory.newInstance()
-    .createXMLStreamReader(
-      new ByteArrayInputStream(currLine.getBytes()));
- 
-    String currentElement = "";
-    int col = 0;
-    
-    // initialize all xml value to blank string
-    for (String xmlTag : xmlDef.xmlDef[3]) {
-     xmlDef.xmlDef[5][col] = "";
-     col++;
-    }
-    
-    
-    // read xml tags and store values in xmlDef
-    while (reader.hasNext()) {
-     int code = reader.next();
-     switch (code) {
-     case START_ELEMENT:
-      currentElement = reader.getLocalName();
-      break;
-     case CHARACTERS:
-      col = 0;
-      for (String xmlTag : xmlDef.xmlDef[3]) {
-       if (currentElement.equalsIgnoreCase(xmlTag)) {
-        xmlDef.xmlDef[5][col] += reader.getText().trim(); 
-       }
-       col++;
-      }
-     }
-    }
-    
+	   String root_dir = System.getProperty("user.dir");
+		String file_path = root_dir + File.separator + "src/xmlRead"+File.separator + "DRA002064.experiment.xml"  ;
+		System.out.println(file_path);
+//	    XMLStreamReader reader = XMLInputFactory.newInstance()
+//	    .createXMLStreamReader(
+//	      new ByteArrayInputStream(currLine.getBytes()));
+	    XMLStreamReader streamReader = XMLInputFactory.newInstance()
+	    .createXMLStreamReader(new FileReader(file_path));
+	    int col = 0 ;   
+	    for (String xmlTag : xmlDef.xmlDef[3]) {
+	        xmlDef.xmlDef[5][col] = "";
+	        col++;
+	       }
+	    col = 0;
+//	    while(streamReader.hasNext()) {
+//	    	System.out.println(streamReader.getEventType());
+//	    	if (streamReader.getEventType() == 1) {
+//	    		System.out.println(streamReader.getLocalName());
+//	    	} else if (streamReader.getEventType() == 4) {
+//	    		System.out.println(streamReader.getText());
+//	    	}
+//	    		
+//	    	streamReader.next();
+//	    }
+
+	    while(streamReader.hasNext()) {
+	    	if (streamReader.getEventType() == XMLStreamReader.START_ELEMENT) {
+	    		currentElement = streamReader.getLocalName();
+	    		if (currentElement == "SUBMITTER_ID") {
+	    			System.out.println(streamReader.getAttributeValue(null,"namespace"));
+		    	   	xmlDef.xmlDef[5][1] = streamReader.getAttributeValue(null,"namespace"); 
+
+	    		}
+
+	    	} else if (streamReader.getEventType() == XMLStreamReader.CHARACTERS) {
+	    		 for (String xmlTag : xmlDef.xmlDef[4]) {
+//		    			  	System.out.println(streamReader.getText() +" value");
+//		    			    System.out.println(xmlTag+" tag");
+	    		       if (currentElement.equals(xmlTag)) {
+	    		    	   if (xmlTag.equals("SUBMITTER_ID"))  {
+	    		    		   col++;
+	    		    		   break;
+	    		    	   }
+	    		    	   System.out.println(col);
+	    		    	   xmlDef.xmlDef[5][col] = streamReader.getText(); 
+	    		    	   System.out.println(xmlDef.xmlDef[5][col]);
+	    		    	   col++;
+		    		       if (col >11){
+		    		    	   break;
+		    		       }
+		    		       break;
+	    		       }
+	    		    
+	    		 }
+	    		 System.out.println(currentElement +" "+  streamReader.getText());
+ 		       	currentElement = "";
+
+	    	}
+	    	streamReader.next();
+	    	
+	    }
+	    
     
     // writing values to mapper output file
     // can remove this context.write

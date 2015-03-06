@@ -1,5 +1,7 @@
 package com.bio;
 
+import java.io.File;
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hbase.client.HTable;
@@ -11,12 +13,14 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-
 import org.apache.mahout.text.wikipedia.XmlInputFormat;
 
 public final class commonTableDriver {
  public static void main(String[] args) throws Exception {
-  commonRunJob(args[0], args[1]);
+String root_dir = System.getProperty("user.dir");
+String input = root_dir + File.separator + "xmldata"+File.separator + "DRA002064.experiment.xml"  ;
+String output = root_dir;
+  commonRunJob(input,output);
  }
 
  public static void commonRunJob(String input,String output) throws Exception  {
